@@ -1,9 +1,8 @@
 function login() {
-    let email = document.getElementById("username").value;
+    let username = document.getElementById("username").value;
     let password = document.getElementById("psw-input").value;
-
     let account = {
-        email: email,
+        username: username,
         password: password,
     };
     $.ajax({
@@ -19,7 +18,7 @@ function login() {
         //xử lý khi thành công
         success: function (data) {
             alert("dang nhap thanh cong")
-            localStorage.setItem("token", data);
+            localStorage.setItem("user", data.username);
             location.href = "index.html"
         },
         error: function (err) {
@@ -32,3 +31,5 @@ function logout() {
     localStorage.setItem("token", "")
     location.href = "sign-in-advance.html"
 }
+
+ document.getElementById("showUser").innerHTML = localStorage.getItem("user")
