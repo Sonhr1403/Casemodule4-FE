@@ -17,9 +17,11 @@ function login() {
         data: JSON.stringify(account),
         //xử lý khi thành công
         success: function (data) {
+            // console.log(data);
             alert("dang nhap thanh cong")
             localStorage.setItem("user", data.username);
             location.href = "index.html"
+            localStorage.setItem("token", data.accessToken)
         },
         error: function (err) {
             alert("login fail")
